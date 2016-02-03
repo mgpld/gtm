@@ -1,0 +1,17 @@
+
+# FIRST WARNING FIRST WARNING
+# ************************** #
+# Edit setenv to reflect your fis-gtm PATH
+# ************************** #
+
+# Setup the environment variables
+# This will create things in the 'A' directory
+
+DESTDIR="A"
+source ./setenv $DESTDIR
+
+# Create the global dir
+./create-schemas global.schema
+
+# Install the routines into the gtmroutines dir (the first one)
+cp ../rtns/* ${gtmroutines% *}

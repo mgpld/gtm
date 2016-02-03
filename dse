@@ -1,0 +1,4 @@
+#!/bin/sh
+
+gtmgbldir=/home/$USER/Production/Databases/$gtm_repl_instname/application.gld $gtm_dist/dse
+

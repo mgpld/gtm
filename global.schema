@@ -1,0 +1,35 @@
+SETGD -FILE="/home/$USER/Production/Databases/$gtm_repl_instname/application.gld"
+D -R DEFAULT
+D -S DEFAULT
+T -S -Bloc=4096
+T -S -Lock=40
+T -S -Glob=4096
+T -S -Alloc=1000
+T -S -Ext=3000
+T -S -Ac=BG
+T -R -Rec=4080
+T -R -Key=127
+T -R -N=AL
+T -R -J=BE
+A -S DEFAULT -F="/home/$USER/Production/Databases/$gtm_repl_instname/default.db"
+A -S IMAGE -F="/home/$USER/Production/Databases/$gtm_repl_instname/image.db"
+A -S SESSIONS -F="/home/$USER/Production/Databases/$gtm_repl_instname/sessions.db" -Ac=MM
+A -S USERS -F="/home/$USER/Production/Databases/$gtm_repl_instname/users.db" 
+A -S IPS -F="/home/$USER/Production/Databases/$gtm_repl_instname/ips.db" -Ac=MM
+A -R DEFAULT -D=DEFAULT
+A -R IMAGE -D=IMAGE
+A -R SESSIONS -D=SESSIONS -K=64 -R=2048 -J=NOBE
+A -R USERS -D=USERS -J=NOBE
+A -R IPS -D=IPS -R=512 -J=NOBE
+LOC -R=DEFAULT
+A -N sessions* -R=SESSIONS
+A -N image* -R=IMAGE
+A -N users* -R=USERS
+A -N ips* -R=IPS
+SH -R DEFAULT
+SH -R SESSIONS
+SH -R USERS
+SH -R IMAGE
+SH -R IPS
+V -A
+E

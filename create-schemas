@@ -1,0 +1,13 @@
+#!/bin/sh
+
+SCHEMA=${1?usage: $0 schema.file}
+
+$gtm_dist/mumps -r ^GDE @$SCHEMA
+
+for f in $(egrep 'FILE="([^"]+)' -o $SCHEMA | cut -d'"' -f2)
+do
+    DIR=${gtm_repl_instance%/*}
+    GBL=$DIR/${f##*/}
+    echo Creating $GBL
+    gtmgbldir=$GBL $gtm_dist/mupip create
+done

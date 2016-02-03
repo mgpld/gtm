@@ -1,0 +1,21 @@
+# source me
+
+if [[ -n "$1" ]]
+then
+
+echo "Setting up '$1'"
+
+export gtm_dist=/opt/fis-gtm/V6.2-002A/utf8
+export gtm_repl_instname=$1
+export gtm_repl_instance=/home/$USER/Production/Databases/$gtm_repl_instname/gtm.repl
+export gtmgbldir=/home/$USER/Production/Databases/$gtm_repl_instname/application.gld
+export gtm_principal_editing=EDITING
+export gtm_chset=UTF-8
+export gtm_icu_version=4.8
+export gtm_zlib_cmp_level=9
+export gtmroutines="$gtm_dist/libgtmutil.so"
+mkdir -p /home/$USER/Production/Databases/$gtm_repl_instname/rtns/{o,r}
+
+else
+    echo "Usage: source setenv DESTDIR"
+fi
