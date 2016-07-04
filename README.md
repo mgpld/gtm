@@ -16,3 +16,9 @@ DSE> find -region=REGIONYOUWANT
 DSE> change -fi -REC=4096
 DSE> q
 ```
+
+## Viewing the active routines
+```
+./dm
+GTM> zshow "a"
+```
